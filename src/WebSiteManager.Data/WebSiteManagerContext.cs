@@ -5,6 +5,8 @@ namespace WebSiteManager.Data
 {
     public class WebSiteManagerContext : DbContext
     {
+        public DbSet<WebSite> WebSites { get; set; }
+
         public DbSet<Login> Logins { get; set; }
 
         public DbSet<Category> Categories { get; set; }
