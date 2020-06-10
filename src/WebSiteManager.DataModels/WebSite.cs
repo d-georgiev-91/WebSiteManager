@@ -8,6 +8,8 @@
 
         public string Url { get; set; }
 
+        public string HomePageSnapshotPath { get; set; }
+
         public bool IsDeleted { get; set; }
 
         public CategoryId CategoryId { get; set; }

@@ -57,6 +57,10 @@ namespace WebSiteManager.Data
                         .IsRequired()
                         .HasMaxLength(200);
 
+                    entityTypeBuilder.Property(e => e.HomePageSnapshotPath)
+                        .IsRequired()
+                        .HasMaxLength(300);
+
                     entityTypeBuilder.Property(e => e.IsDeleted)
                         .IsRequired()
                         .HasDefaultValue(false);
