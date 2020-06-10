@@ -10,7 +10,7 @@
 
         public bool IsDeleted { get; set; }
 
-        public byte CategoryId { get; set; }
+        public CategoryId CategoryId { get; set; }
 
         public Category Category { get; set; }
 

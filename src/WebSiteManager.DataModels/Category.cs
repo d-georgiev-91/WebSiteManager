@@ -2,7 +2,7 @@
 {
     public class Category
     {
-        public byte Id { get; set; }
+        public CategoryId Id { get; set; }
 
         public string Name { get; set; }
     }
