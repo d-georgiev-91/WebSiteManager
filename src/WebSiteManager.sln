@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.30128.74
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebSiteManager.Data", "WebSiteManager.Data\WebSiteManager.Data.csproj", "{A23017C7-83D5-4531-BF50-600AE54C0BDE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSiteManager.DataModels", "WebSiteManager.DataModels\WebSiteManager.DataModels.csproj", "{D880DBE3-BCF1-4014-9412-53A7DAAC3D7D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebSiteManager.DataModels", "WebSiteManager.DataModels\WebSiteManager.DataModels.csproj", "{D880DBE3-BCF1-4014-9412-53A7DAAC3D7D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSiteManager.Services", "WebSiteManager.Services\WebSiteManager.Services.csproj", "{D6C3436E-A369-432E-81FE-BE67DD62F1BB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{D880DBE3-BCF1-4014-9412-53A7DAAC3D7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D880DBE3-BCF1-4014-9412-53A7DAAC3D7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D880DBE3-BCF1-4014-9412-53A7DAAC3D7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6C3436E-A369-432E-81FE-BE67DD62F1BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6C3436E-A369-432E-81FE-BE67DD62F1BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6C3436E-A369-432E-81FE-BE67DD62F1BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6C3436E-A369-432E-81FE-BE67DD62F1BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
