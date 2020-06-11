@@ -7,6 +7,8 @@ namespace WebSiteManager.Services
     {
         Task AddAsync(WebSite webSite);
 
+        Task UpdateAsync(WebSite webSite);
+
         Task DeleteAsync(int webSiteId);
     }
 }

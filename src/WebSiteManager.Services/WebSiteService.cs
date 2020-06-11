@@ -21,9 +21,18 @@ namespace WebSiteManager.Services
             await _webSiteManagerData.SaveChangesAsync();
         }
 
+        public async Task UpdateAsync(WebSite webSite)
+        {
+            //TODO: Store image and crypt password
+            _webSiteManagerData.WebSiteRepository.Update(webSite);
+            await _webSiteManagerData.SaveChangesAsync();
+        }
+
+        private WebSite GetWebSiteById(int webSiteId) => _webSiteManagerData.WebSiteRepository.Get(w => w.Id == webSiteId).FirstOrDefault();
+
         public async Task DeleteAsync(int webSiteId)
         {
-            var webSite = _webSiteManagerData.WebSiteRepository.Get(p=> p.Id == webSiteId).FirstOrDefault();
+            var webSite = GetWebSiteById(webSiteId);
             webSite.IsDeleted = false;
             await _webSiteManagerData.SaveChangesAsync();
         }
