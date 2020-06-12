@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using NSubstitute;
@@ -41,7 +42,7 @@ namespace WebSiteManager.ServicesTests
             _webSiteRepository.Get(Arg.Any<Expression<Func<WebSite, bool>>>()).Returns(new List<WebSite>
             {
                 webSiteToDelete
-            });
+            }.AsQueryable());
 
             _webSiteManagerData.WebSiteRepository.Returns(_webSiteRepository);
             var serviceResult = await _webSiteService.DeleteAsync(1);
