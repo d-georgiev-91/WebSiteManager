@@ -12,6 +12,8 @@ namespace WebSiteManager.Services
 
         Task UpdateAsync(WebSite webSite);
 
+        ServiceResult<Paginated<WebSite>> GetAll(Page page, Sorting sorting);
+        
         /// <summary>
         /// Soft deletes website
         /// </summary>

@@ -1,5 +1,7 @@
 ﻿using System.Linq;
+using System.Linq.Dynamic.Core;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using WebSiteManager.Data;
 using WebSiteManager.DataModels;
 using WebSiteManager.Services.Security;
@@ -38,6 +40,35 @@ namespace WebSiteManager.Services
 
             _webSiteManagerData.WebSiteRepository.Update(webSite);
             await _webSiteManagerData.SaveChangesAsync();
+        }
+
+        public ServiceResult<Paginated<WebSite>> GetAll(Page page, Sorting sorting)
+        {
+            var serviceResult = new ServiceResult<Paginated<WebSite>>();
+
+            var webSites = _webSiteManagerData.WebSiteRepository.Get();
+
+            var webSitesCount = webSites.Count();
+
+            if (sorting != null && sorting.Columns.Any())
+            {
+                webSites = webSites.OrderBy(string.Join(",", sorting.Columns.Select(c => c.Key + " " + c.Value)));
+            }
+
+            if (page != null)
+            {
+                webSites = webSites
+                    .Take(page.Size)
+                    .Skip(page.Index * page.Size);
+            }
+
+            serviceResult.Data = new Paginated<WebSite>
+            {
+                Data = webSites.Include(w => w.Login),
+                TotalCount = webSitesCount
+            };
+
+            return serviceResult;
         }
 
         private WebSite GetWebSiteById(int webSiteId) => _webSiteManagerData.WebSiteRepository.Get(w => w.Id == webSiteId).FirstOrDefault();
