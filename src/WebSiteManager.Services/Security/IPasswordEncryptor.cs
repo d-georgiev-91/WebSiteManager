@@ -15,8 +15,8 @@
         /// <summary>
         /// Decrypts password
         /// </summary>
-        /// <param name="password">The password</param>
+        /// <param name="encryptedPassword">The password</param>
         /// <returns>The decrypted password</returns>
-        string Decrypt(string password);
+        string Decrypt(string encryptedPassword);
     }
 }
