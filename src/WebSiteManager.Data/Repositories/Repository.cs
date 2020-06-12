@@ -17,9 +17,9 @@ namespace WebSiteManager.Data.Repositories
             _dbSet = dbContext.Set<TEntity>();
         }
 
-        public IEnumerable<TEntity> Get() => _dbSet;
+        public IQueryable<TEntity> Get() => _dbSet;
 
-        public IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> predicate) => _dbSet.Where(predicate);
+        public IQueryable<TEntity> Get(Expression<Func<TEntity, bool>> predicate) => _dbSet.Where(predicate);
 
         public void Add(TEntity entity) => ChangeState(entity, EntityState.Added);
 
