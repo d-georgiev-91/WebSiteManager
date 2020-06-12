@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using WebSiteManager.Data;
 using WebSiteManager.DataModels;
+using WebSiteManager.Services.Security;
 
 namespace WebSiteManager.Services
 {
@@ -10,22 +11,27 @@ namespace WebSiteManager.Services
     {
         private const string NoSuchWebsiteWithIdErrorMessage = "No such website with id {0}";
         private readonly IWebSiteManagerData _webSiteManagerData;
+        private readonly IPasswordEncryptor _passwordEncryptor;
 
-        public WebSiteService(IWebSiteManagerData webSiteManagerData)
+        public WebSiteService(IWebSiteManagerData webSiteManagerData,
+            IPasswordEncryptor passwordEncryptor)
         {
             _webSiteManagerData = webSiteManagerData;
+            _passwordEncryptor = passwordEncryptor;
         }
 
         public async Task AddAsync(WebSite webSite)
         {
-            //TODO: Store image and crypt password
+            webSite.Login.Password = _passwordEncryptor.Encrypt(webSite.Login.Password);
+
             _webSiteManagerData.WebSiteRepository.Add(webSite);
             await _webSiteManagerData.SaveChangesAsync();
         }
 
         public async Task UpdateAsync(WebSite webSite)
         {
-            //TODO: Store image and crypt password
+            webSite.Login.Password = _passwordEncryptor.Encrypt(webSite.Login.Password);
+
             _webSiteManagerData.WebSiteRepository.Update(webSite);
             await _webSiteManagerData.SaveChangesAsync();
         }

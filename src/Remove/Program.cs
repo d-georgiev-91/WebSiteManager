@@ -11,7 +11,7 @@ namespace Remove
         {
             var dbContext = new WebSiteManagerContext();
             var websiteManagerData = new WebSiteManagerData(dbContext);
-            var webSiteService = new WebSiteService(websiteManagerData);
+            var webSiteService = new WebSiteService(websiteManagerData, null);
 
             await Delete(webSiteService);
         }

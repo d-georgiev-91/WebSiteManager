@@ -8,6 +8,7 @@ using WebSiteManager.Data;
 using WebSiteManager.Data.Repositories;
 using WebSiteManager.DataModels;
 using WebSiteManager.Services;
+using WebSiteManager.Services.Security;
 
 namespace WebSiteManager.ServicesTests
 {
@@ -17,13 +18,15 @@ namespace WebSiteManager.ServicesTests
         private IWebSiteManagerData _webSiteManagerData;
         private WebSiteService _webSiteService;
         private IRepository<WebSite> _webSiteRepository;
+        private IPasswordEncryptor _passwordEncryptor;
 
         [SetUp]
         public void Setup()
         {
             _webSiteRepository = Substitute.For<IRepository<WebSite>>();
             _webSiteManagerData = Substitute.For<IWebSiteManagerData>();
-            _webSiteService = new WebSiteService(_webSiteManagerData);
+            _passwordEncryptor = Substitute.For<IPasswordEncryptor>();
+            _webSiteService = new WebSiteService(_webSiteManagerData, _passwordEncryptor);
         }
 
         #region Delete Tests
