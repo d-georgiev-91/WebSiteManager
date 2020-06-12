@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebSiteManager.Data", "WebS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebSiteManager.DataModels", "WebSiteManager.DataModels\WebSiteManager.DataModels.csproj", "{D880DBE3-BCF1-4014-9412-53A7DAAC3D7D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSiteManager.Services", "WebSiteManager.Services\WebSiteManager.Services.csproj", "{D6C3436E-A369-432E-81FE-BE67DD62F1BB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebSiteManager.Services", "WebSiteManager.Services\WebSiteManager.Services.csproj", "{D6C3436E-A369-432E-81FE-BE67DD62F1BB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Remove", "Remove\Remove.csproj", "{3B273052-E04B-4CF1-B6A5-B0753103BDE2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Remove", "Remove\Remove.csproj", "{3B273052-E04B-4CF1-B6A5-B0753103BDE2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSiteManager.ServicesTests", "WebSiteManager.ServicesTests\WebSiteManager.ServicesTests.csproj", "{8069A3C8-8192-4688-B974-A63A9E3C3348}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{3B273052-E04B-4CF1-B6A5-B0753103BDE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B273052-E04B-4CF1-B6A5-B0753103BDE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B273052-E04B-4CF1-B6A5-B0753103BDE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8069A3C8-8192-4688-B974-A63A9E3C3348}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8069A3C8-8192-4688-B974-A63A9E3C3348}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8069A3C8-8192-4688-B974-A63A9E3C3348}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8069A3C8-8192-4688-B974-A63A9E3C3348}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
