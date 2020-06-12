@@ -10,10 +10,11 @@ namespace WebSiteManager.Services
             Errors = new Dictionary<ErrorType, ServiceResultError>();
         }
 
-        public Dictionary<ErrorType, ServiceResultError> Errors { get; set; }
+        public Dictionary<ErrorType, ServiceResultError> Errors { get; }
 
-        public ServiceResult AddError(ErrorType type, ServiceResultError error)
+        public ServiceResult AddError(ErrorType type, string message)
         {
+            var error = new ServiceResultError(type, message);
             Errors.Add(type, error);
 
             return this;
