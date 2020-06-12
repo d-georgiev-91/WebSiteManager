@@ -5,8 +5,10 @@ using WebSiteManager.DataModels;
 
 namespace WebSiteManager.Services
 {
+    /// <inheritdoc cref="IWebSiteService"/>
     public class WebSiteService : IWebSiteService
     {
+        private const string NoSuchWebsiteWithIdErrorMessage = "No such website with id {0}";
         private readonly IWebSiteManagerData _webSiteManagerData;
 
         public WebSiteService(IWebSiteManagerData webSiteManagerData)
@@ -30,6 +32,8 @@ namespace WebSiteManager.Services
 
         private WebSite GetWebSiteById(int webSiteId) => _webSiteManagerData.WebSiteRepository.Get(w => w.Id == webSiteId).FirstOrDefault();
 
+
+        /// <inheritdoc cref="IWebSiteService.DeleteAsync" />
         public async Task<ServiceResult> DeleteAsync(int webSiteId)
         {
             var webSite = GetWebSiteById(webSiteId);
@@ -37,7 +41,7 @@ namespace WebSiteManager.Services
 
             if (webSite == null)
             {
-                serviceResult.AddError(ErrorType.NotFound, $"No such website with id {webSiteId}");
+                serviceResult.AddError(ErrorType.NotFound, NoSuchWebsiteWithIdErrorMessage);
                 return serviceResult;
             }
 
