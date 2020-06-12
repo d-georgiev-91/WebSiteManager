@@ -33,7 +33,7 @@ namespace WebSiteManager.Services
         public async Task DeleteAsync(int webSiteId)
         {
             var webSite = GetWebSiteById(webSiteId);
-            webSite.IsDeleted = false;
+            webSite.IsDeleted = true;
             await _webSiteManagerData.SaveChangesAsync();
         }
     }
