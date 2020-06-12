@@ -10,6 +10,7 @@ namespace WebSiteManager.Services
     public class WebSiteService : IWebSiteService
     {
         private const string NoSuchWebsiteWithIdErrorMessage = "No such website with id {0}";
+
         private readonly IWebSiteManagerData _webSiteManagerData;
         private readonly IPasswordEncryptor _passwordEncryptor;
 
@@ -30,7 +31,10 @@ namespace WebSiteManager.Services
 
         public async Task UpdateAsync(WebSite webSite)
         {
-            webSite.Login.Password = _passwordEncryptor.Encrypt(webSite.Login.Password);
+            if (webSite.Login?.Password != null)
+            {
+                webSite.Login.Password = _passwordEncryptor.Encrypt(webSite.Login.Password);
+            }
 
             _webSiteManagerData.WebSiteRepository.Update(webSite);
             await _webSiteManagerData.SaveChangesAsync();
@@ -47,7 +51,7 @@ namespace WebSiteManager.Services
 
             if (webSite == null)
             {
-                serviceResult.AddError(ErrorType.NotFound, NoSuchWebsiteWithIdErrorMessage);
+                serviceResult.AddError(ErrorType.NotFound, string.Format(NoSuchWebsiteWithIdErrorMessage, webSiteId));
                 return serviceResult;
             }
 
