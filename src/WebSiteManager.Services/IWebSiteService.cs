@@ -9,6 +9,6 @@ namespace WebSiteManager.Services
 
         Task UpdateAsync(WebSite webSite);
 
-        Task DeleteAsync(int webSiteId);
+        Task<ServiceResult> DeleteAsync(int webSiteId);
     }
 }

@@ -30,11 +30,21 @@ namespace WebSiteManager.Services
 
         private WebSite GetWebSiteById(int webSiteId) => _webSiteManagerData.WebSiteRepository.Get(w => w.Id == webSiteId).FirstOrDefault();
 
-        public async Task DeleteAsync(int webSiteId)
+        public async Task<ServiceResult> DeleteAsync(int webSiteId)
         {
             var webSite = GetWebSiteById(webSiteId);
+            var serviceResult = new ServiceResult();
+
+            if (webSite == null)
+            {
+                serviceResult.AddError(ErrorType.NotFound, $"No such website with id {webSiteId}");
+                return serviceResult;
+            }
+
             webSite.IsDeleted = true;
             await _webSiteManagerData.SaveChangesAsync();
+
+            return serviceResult;
         }
     }
 }
