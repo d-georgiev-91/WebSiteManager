@@ -46,7 +46,7 @@ namespace WebSiteManager.Services
         {
             var serviceResult = new ServiceResult<Paginated<WebSite>>();
 
-            var webSites = _webSiteManagerData.WebSiteRepository.Get();
+            var webSites = _webSiteManagerData.WebSiteRepository.Get(w => !w.IsDeleted);
 
             var webSitesCount = webSites.Count();
 
