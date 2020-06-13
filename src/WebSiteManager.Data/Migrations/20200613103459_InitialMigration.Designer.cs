@@ -9,8 +9,8 @@ using WebSiteManager.Data;
 namespace WebSiteManager.Data.Migrations
 {
     [DbContext(typeof(WebSiteManagerContext))]
-    [Migration("20200610203842_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20200613103459_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
