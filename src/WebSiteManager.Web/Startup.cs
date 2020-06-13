@@ -1,9 +1,14 @@
+using AutoMapper;
 using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using WebSiteManager.Data;
+using WebSiteManager.Services;
+using WebSiteManager.Services.Security;
 
 namespace WebSiteManager.Web
 {
@@ -19,6 +24,15 @@ namespace WebSiteManager.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<WebSiteManagerContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddScoped<IEncryptionKeyProvider, HardcodedKeyProvider>();
+            services.AddScoped<IPasswordEncryptor, AesPasswordEncryptor>();
+            services.AddScoped<IWebSiteManagerData, WebSiteManagerData>();
+            services.AddScoped<IWebSiteService, WebSiteService>();
+
+            services.AddAutoMapper(typeof(Startup));
             services.AddControllers();
 
             services.AddSwaggerGen(c =>

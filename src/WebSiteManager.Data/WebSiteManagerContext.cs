@@ -8,6 +8,12 @@ namespace WebSiteManager.Data
 {
     public class WebSiteManagerContext : DbContext
     {
+        public WebSiteManagerContext(DbContextOptions<WebSiteManagerContext> options) :
+            base(options)
+        {
+
+        }
+
         public DbSet<WebSite> WebSites { get; set; }
 
         public DbSet<Login> Logins { get; set; }
